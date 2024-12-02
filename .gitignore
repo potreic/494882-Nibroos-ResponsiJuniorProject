@@ -1,0 +1,70 @@
+# Build folders
+scr/bin/
+scr/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Auto-generated files
+TestResults/
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.log
+*.ide
+
+# Backup files
+*.bak
+*.swp
+*.orig
+*.tmp
+*.old
+*.sln.ide
+
+# IDE-specific folders
+_ReSharper*/
+.idea/
+*.resharper
+*.DotSettings.user
+.project
+.classpath
+*.csproj.user
+*.vbproj.user
+
+# ASP.NET cache files
+*.csproj.webinfo
+*.publishsettings
+
+# Configurations
+appsettings.json
+appsettings.*.json
+
+# Windows-specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS-specific files
+.DS_Store
+
+# JetBrains Rider specific
+.idea/
+.idea.*
+
+# NuGet Packages
+*.nupkg
+# Include only if you have a packages folder at the solution level
+packages/
+# Uncomment if necessary; generally, we want to ignore packages that are restored by NuGet
+# !packages/repositories.config
+
+# Logs
+*.log
+
+# By default, Windows Forms projects can have some unused files
+*.cache
