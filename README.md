@@ -1,6 +1,6 @@
-# **ResponsiJuniorProject**
+# **Responsi Junior Project**
 
-This repository contains a Windows Forms application called **ResponsiJuniorProject**, designed to manage employee data in a PostgreSQL database. The application includes functionalities for inserting, updating, and deleting employee records, as well as populating department and job title dropdowns from the database.
+This repository contains a Windows Forms application called **Responsi Junior Project**, designed to manage employee data in a PostgreSQL database. The application includes functionalities for inserting, updating, and deleting employee records, as well as populating department and job title dropdowns from the database.
 
 ## **Technologies Used**
 - **C#**: The primary programming language used for the Windows Forms application.
