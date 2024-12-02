@@ -3,7 +3,7 @@ using Npgsql;
 
 namespace ResponsiJuniorProject
 {
-    public partial class Form1 : Form
+    public partial class ResponsiJuniorProject : Form
     {
 
         string connString = "Host=localhost;Port=5432;Username=postgres;Password=12345678;Database=ResponsiJuniorProject";
@@ -13,25 +13,29 @@ namespace ResponsiJuniorProject
         public DataTable dt;
         private DataGridViewRow row;
 
-        public Form1()
+        public ResponsiJuniorProject()
         {
             InitializeComponent();
-            LoadData();
+            LoadDataKaryawan();
+            PopulateDepartmen();
+            PopulateJabatan();
         }
 
-        private void LoadData()
-        {
 
+        //FUNCTION HANDLER ======================================================================================================================================
+        private void LoadDataKaryawan()
+        {
             conn = new NpgsqlConnection(connString);
             try
             {
                 conn.Open();
-                sql = "select  karyawan.id_dep, karyawan.nama, karyawan.id_karyawan, departemen.nama_dep from karyawan, departemen WHERE karyawan.id_dep = departemen.id_dep";
-
-
+                sql = "SELECT * FROM load_all_karyawan_info();"; 
                 cmd = new NpgsqlCommand(sql, conn);
                 dt = new DataTable();
+
+              
                 dt.Load(cmd.ExecuteReader());
+
                 dgvDataTable.DataSource = dt;
             }
             catch (Exception ex)
@@ -42,172 +46,237 @@ namespace ResponsiJuniorProject
             {
                 conn.Close();
             }
-
         }
 
-        private void LoadDataDept()
+        private void PopulateDepartmen()
         {
+            conn = new NpgsqlConnection(connString);
+            try
+            {
+                conn.Open();
+
+                string sql = "SELECT nama_dep FROM Departemen";
+
+                cmd = new NpgsqlCommand(sql, conn);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+
+                comboBoxDep.Items.Clear();
+
+                while (reader.Read())
+                {
+                    string departmentName = reader.GetString(0);  
+                    comboBoxDep.Items.Add(departmentName); 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void PopulateJabatan()
+        {
+            conn = new NpgsqlConnection(connString);
+            try
+            {
+                conn.Open();
+
+                string sql = "SELECT nama_jabatan FROM Jabatan";
+
+      
+                cmd = new NpgsqlCommand(sql, conn);
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+
+       
+                comboBoxJabatan.Items.Clear();
+
+                while (reader.Read())
+                {
+                    string departmentName = reader.GetString(0);  
+                    comboBoxJabatan.Items.Add(departmentName);  
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void InsertDataKaryawan()
+        {
+            string namaKaryawan = textBoxNama.Text;
+            string namaDepartemen = comboBoxDep.SelectedItem?.ToString();
+            string namaJabatan = comboBoxJabatan.SelectedItem?.ToString();
+      
+            if (string.IsNullOrEmpty(namaKaryawan) || string.IsNullOrEmpty(namaDepartemen) || string.IsNullOrEmpty(namaJabatan))
+            {
+                MessageBox.Show("Please fill all fields before inserting.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            conn = new NpgsqlConnection(connString);
+            try
+            {
+                    conn.Open();
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT insert_karyawan(@nama_karyawan, @nama_dep, @nama_jabatan);", conn))
+                    {
+                        cmd.Parameters.AddWithValue("nama_karyawan", namaKaryawan);
+                        cmd.Parameters.AddWithValue("nama_dep", namaDepartemen);
+                        cmd.Parameters.AddWithValue("nama_jabatan", namaJabatan);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                MessageBox.Show("Data inserted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                textBoxNama.Clear();
+                comboBoxDep.SelectedIndex = -1;
+                comboBoxJabatan.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inserting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EditDataKaryawan()
+        {
+            if (dgvDataTable.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to edit.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            row = dgvDataTable.SelectedRows[0];
+            int idKaryawan = Convert.ToInt32(row.Cells["id_karyawan"].Value);
+
+            string namaKaryawan = textBoxNama.Text;
+            string namaDepartemen = comboBoxDep.SelectedItem?.ToString();
+            string namaJabatan = comboBoxJabatan.SelectedItem?.ToString();
+
+            if (string.IsNullOrEmpty(namaKaryawan) || string.IsNullOrEmpty(namaDepartemen) || string.IsNullOrEmpty(namaJabatan))
+            {
+                MessageBox.Show("Please fill all fields before editing.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             conn = new NpgsqlConnection(connString);
             try
             {
                 conn.Open();
-                sql = "select * load_departemen()";
+                using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT update_karyawan(@id_karyawan, @nama_karyawan, @nama_dep, @nama_jabatan);", conn))
+                {
+                    cmd.Parameters.AddWithValue("id_karyawan", idKaryawan);
+                    cmd.Parameters.AddWithValue("nama_karyawan", namaKaryawan);
+                    cmd.Parameters.AddWithValue("nama_dep", namaDepartemen);
+                    cmd.Parameters.AddWithValue("nama_jabatan", namaJabatan);
 
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Data updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                cmd = new NpgsqlCommand(sql, conn);
-                dt = new DataTable();
-                dt.Load(cmd.ExecuteReader());
-
-
-                MessageBox.Show("Load Data Success");
+                LoadDataKaryawan();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error showing departmen");
+                MessageBox.Show($"Error updating data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 conn.Close();
             }
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void DeleteDataKaryawan()
         {
-            LoadDataDept();
-
-
-        }
-
-
-
-        private void InsertData()
-        {
-            string nama = textBoxNama.Text;
-            string dep = comboBoxDep.Text;
-
-
-            try
+            if (dgvDataTable.SelectedRows.Count == 0)
             {
-                conn = new NpgsqlConnection(connString);
-                conn.Open();
-                sql = "SELECT * FROM add_karyawan(@in_id_karyawan, @in_nama, @in_nama_dep)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@in_nama", nama);
-                cmd.Parameters.AddWithValue("@in_nama_dep", dep);
-                int statusCode = (int)cmd.ExecuteScalar();
-                if (statusCode == 201)
-                {
-                    MessageBox.Show("[201] Created");
-                    LoadData();
-                    return;
-                }
-                if (statusCode == 409)
-                {
-                    throw new Exception("[409] User already exist");
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Please select a row to delete.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            finally { conn.Close(); }
+
+            row = dgvDataTable.SelectedRows[0];
+            int idKaryawan = Convert.ToInt32(row.Cells["id_karyawan"].Value);
+
+            // Confirm before deleting
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete the selected record (ID: {idKaryawan})?",
+                                                  "Delete Confirmation",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                conn = new NpgsqlConnection(connString);
+                try
+                {
+                    conn.Open();
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT delete_karyawan(@id_karyawan);", conn))
+                    {
+                        cmd.Parameters.AddWithValue("id_karyawan", idKaryawan);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Data deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Reload data in the DataGridView
+                    LoadDataKaryawan();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
+
+
+        //BUTTON ACTION HANDLER ======================================================================================================================================
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            InsertData();
-        }
 
-        private void EditData()
-        {
-            if (row == null)
-            {
-                MessageBox.Show("Pilih karyawan untuk diedit", "Ingfo");
-                return;
-            }
-            try
-            {
-                string nama = textBoxNama.Text;
-                string dep = comboBoxDep.Text;
-
-                conn = new NpgsqlConnection(connString);
-                conn.Open();
-                sql = "SELECT * FROM edit_karyawan(@in_id_karyawan, @in_nama, @in_nama_dep)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@in_id_karyawan", row.Cells["id_karyawan"].Value);
-                cmd.Parameters.AddWithValue("@in_nama", nama);
-                cmd.Parameters.AddWithValue("@in_nama_dep", dep);
-
-                int statusCode = (int)cmd.ExecuteScalar();
-
-                if (statusCode == 200)
-                {
-                    MessageBox.Show("[200] Edit success", "Success");
-                    LoadData();
-                    return;
-                }
-                if (statusCode == 404)
-                {
-                    throw new Exception("[404] karyawan tidak ditemukan");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { conn.Close(); }
-        }
-
-
-        private void dgvDataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            InsertDataKaryawan();
+            LoadDataKaryawan();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            EditData();
+            EditDataKaryawan();
+            LoadDataKaryawan();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (row == null)
-            {
-                MessageBox.Show("Pilih karyawan untuk dihapus");
-                return;
-            }
-            try
-            {
-                conn = new NpgsqlConnection(connString);
-                conn.Open();
-                sql = "SELECT * FROM delete_karyawan(@in_id_karyawan)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@in_id_karyawan", row.Cells["id_karyawan"].Value);
+            DeleteDataKaryawan();
+            LoadDataKaryawan();
+        }
 
-                int statusCode = (int)cmd.ExecuteScalar();
+        private void dgvDataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                row = dgvDataTable.Rows[e.RowIndex];
 
-                if (statusCode == 204)
-                {
-                    MessageBox.Show("[204] Delete success", "Success");
-                    LoadData();
-                    return;
-                }
-                if (statusCode == 404)
-                {
-                    throw new Exception("[404] Karyawan tidak ditemukan");
-                }
+                textBoxNama.Text = row.Cells["nama_karyawan"].Value?.ToString();
+                comboBoxDep.SelectedItem = row.Cells["nama_dep"].Value?.ToString();
+                comboBoxJabatan.SelectedItem = row.Cells["nama_jabatan"].Value?.ToString();
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+        }
+
+
+        private void labelNama_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -23,3 +23,30 @@ C:\Dummy Prodigy\ResponsiJuniorProject\ResponsiJuniorProject\obj\Debug\net6.0-wi
 C:\Dummy Prodigy\ResponsiJuniorProject\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.pdb
 C:\Dummy Prodigy\ResponsiJuniorProject\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.genruntimeconfig.cache
 C:\Dummy Prodigy\ResponsiJuniorProject\ResponsiJuniorProject\obj\Debug\net6.0-windows\ref\ResponsiJuniorProject.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.csproj.AssemblyReference.cache
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.csproj.GenerateResource.cache
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.AssemblyInfoInputs.cache
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.AssemblyInfo.cs
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.csproj.CoreCompileInputs.cache
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.sourcelink.json
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\refint\ResponsiJuniorProject.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.pdb
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\ResponsiJuniorProject.exe
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\ResponsiJuniorProject.deps.json
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\ResponsiJuniorProject.runtimeconfig.json
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\ResponsiJuniorProject.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\ResponsiJuniorProject.pdb
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\Npgsql.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\System.Text.Json.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.csproj.CopyComplete
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.genruntimeconfig.cache
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ref\ResponsiJuniorProject.dll
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.ResponsiJuniorProject.resources
+D:\Cool-Yeah\Lima Sekawan IPK Tiga Delapan\Junior Project\Responsi\494882-Nibroos-ResponsiJuniorProject\scr\ResponsiJuniorProject\obj\Debug\net6.0-windows\ResponsiJuniorProject.Properties.Resources.resources
