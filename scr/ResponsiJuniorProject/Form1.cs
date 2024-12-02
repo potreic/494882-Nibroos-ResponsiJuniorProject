@@ -3,6 +3,9 @@ using Npgsql;
 
 namespace ResponsiJuniorProject
 {
+
+    //inheritance dari form
+    //encapsulation almost all of the code function
     public partial class ResponsiJuniorProject : Form
     {
 
